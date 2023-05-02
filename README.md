@@ -1,5 +1,39 @@
+### what is jenkins
+
+Jenkins is an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
+
+### Other CICD Tools
+There are a number of other CICD tools
+
+<img width="317" alt="image" src="https://user-images.githubusercontent.com/118978642/235721037-31e83e60-4aa3-4a8c-bed8-842e009dae53.png">
+
+Continuous Integration (CI): Developers merge/commit code to master branch multiple times a day, fully automated build and test process which gives feedback within few minutes, by doing so, you avoid the integration hell that usually happens when people wait for release day to merge their changes into the release branch.
+
+Continuous Delivery is an extension of continuous integration to make sure that you can release new changes to your customers quickly in a sustainable way. This means that on top of having automated your testing, you also have automated your release process and you can deploy your application at any point of time by clicking on a button. In continuous Delivery the deployment is completed manually.
+
+Continuous Deployment goes one step further than continuous delivery, with this practice, every change that passes all stages of your production pipeline is released to your customers, there is no human intervention, and only a failed test will prevent a new change to be deployed to production.
+
+<img width="526" alt="image" src="https://user-images.githubusercontent.com/118978642/235721775-9187721d-325b-4947-9cf6-b5c0c4ed6d43.png">
+
+### CICD
+
+1. Code development: This stage involves the actual coding of new features, bug fixes, or improvements.
+
+2. Code review: In this stage, code changes are reviewed by other developers, who provide feedback and suggest improvements.
+
+3. Code testing: This stage involves running automated tests to ensure that the code changes do not break existing functionality.
+
+4. Build: In this stage, the code changes are compiled, packaged, and built into a deployable artifact.
+
+5. Deployment: In this stage, the built artifact is deployed to a testing environment or a production environment, depending on the pipeline configuration.
+
+6. Testing: In this stage, the application is tested in the target environment to ensure that it is functioning correctly and meeting the desired requirements.
+
+7. Release: In this stage, the application is released to end-users or customers, depending on the pipeline configuration.
+
+8. Monitoring: In this stage, the application is monitored for performance, errors, and other issues, and data is collected to improve future releases.
+
 <img width="566" alt="image" src="https://user-images.githubusercontent.com/118978642/235697927-b157c5d1-edcd-4912-9f5f-21501b0c7e22.png">
-### Jenkins
 
 Some basic preliminary steps:
 - click on new item
@@ -86,3 +120,6 @@ click add, then configure as below - you need to add your private key to the box
 <img width="593" alt="image" src="https://user-images.githubusercontent.com/118978642/235720200-55da9ef6-04d4-4265-9d5c-79884a279119.png">
 - under build section
 <img width="578" alt="image" src="https://user-images.githubusercontent.com/118978642/235720331-12012404-599b-4d9f-9646-4b6b85ab6d44.png">
+ 
+ click save. Once on the dashboard click on build now. 
+ 
