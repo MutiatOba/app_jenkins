@@ -35,6 +35,19 @@ Continuous Deployment goes one step further than continuous delivery, with this 
 
 <img width="566" alt="image" src="https://user-images.githubusercontent.com/118978642/235697927-b157c5d1-edcd-4912-9f5f-21501b0c7e22.png">
 
+need github - continously developing code and integrating that code with what others are developing. Send to github via ssh
+
+When it gets to github, you need to test it before going to next stage
+
+You are continuously integrating.
+
+webhook trigger - code is triggured each time an actions takes place. behind the webhook there is an API. the webhook is always actively looking. so min we send code, it triggers. We need ssh setup for this to happen in relation to a specific repository where we have the app code. 
+
+if the code is merged succeful, we need to test the code. we use jenkins to test the code. jenkins has been set up on aws. need to put public key in github and private key in jenkins for specifi repository so when data travels it is secured. 
+
+To test code, we have Jenksins servers. we want to automate the testing. we have master node running (ec2 instance) which is listening. when github receives the code, jenkin clones the code and create a job in jenkins and test is. Agent node run the test. if the test past master node gets results then we can go into production on aws. we have an ec2 on aws which is replaced by the new ec2. - this is where we get to delivery and deployment steps. 
+
+
 Some basic preliminary steps:
 - click on new item
 - give your job a name: mutiat-checking-zone
