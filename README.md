@@ -140,5 +140,72 @@ click add, then configure as below - you need to add your private key to the box
  
  click save. Once on the dashboard click on build now. 
  
+ #### automating steps
+ 
+ Now want to automate. So once make change on github, dont have to press build now in Jenkins. Need to create a webhook. So need to configure github. final step, when make changes locally, webhook is triggured and jenkins is triggured. You want to check things in stages so can see where issues are. 
+
+##### overall steps: 
+ 
+Jenkins to github connection: 
+- go to jenkins
+- click on your job
+- want to make change on readme (on git) - commit change - if you press commit changes then job actomatically triggured on jenkins. the webhook helped triggured this 
+
+Check changes made locally built automatically on github:
+- git pull - pull changes from git
+- then make a change to readme on local host
+- git add .
+- git commit
+- git push 
+- check job triggured on jenkins 
+
+This is a complete CI now 
+
+ ##### detailed steps:
+ 
+in summary we want to:
+- create webhook for jenkins/endpoint. 
+- create the webhook in github for the repo where you have the app code
+- test the webhook - testing status code 200
+- make a change to github read me and commit the change (if webhook workinng then should see job triggured)
+
+github to jenkins connection:
+- go to github repo
+- setting
+- webhook
+- go to jenkins and copy webip: http://35.178.11.196:8080/github-webhook/
+- back to git hub and configure as below:
+1. application/json
+2. just push event
+3. add webhook
+[webhook is api call in the background]
+ <img width="609" alt="image" src="https://user-images.githubusercontent.com/118978642/235888265-3b19d19b-84e6-4847-84d2-9a97e4e9da30.png">
+
+
+go to your job on jenkins:
+- click on configure
+- under build triggure
+- tick: GitHub hook trigger for GITScm polling
+- save
+[now jenkins has been told to troggire job]
+<img width="573" alt="image" src="https://user-images.githubusercontent.com/118978642/235888401-b1f5ffe5-3f91-4810-9530-7ff47fe52be1.png">
+
+- make a change to readme on github
+- commit change
+- Then a job on jenkins automatically triggured
+
+##### local to jenkins
+Now go to local host 
+- git pull origin main
+- make a change to your readme
+- git add readme.md
+- git commit -m "change for jenkins"
+- git push 
+- change is pushed and built on jenkins 
+
+We have already automated testing with jenkins [look at build section]
+<img width="553" alt="image" src="https://user-images.githubusercontent.com/118978642/235888842-d913b53c-3d79-4b15-9c9e-68d67f6307ca.png">
+
+if there is issue then send console output to relevant person. can save the logs with s3 
  
  
