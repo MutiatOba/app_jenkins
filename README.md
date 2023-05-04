@@ -289,12 +289,61 @@ If you have issue adding ssh for jenkins, type this in git hub:
 
 7. create job on jenkins 
 
+ #### first job
+ 
+ ##### step 1
+ 
 - click on new items
 - give your job a name: mutiat_ci
 - click freestyle project
-- insert the html link to your git repo as per below
+- insert the html link to your git repo as per below, add the private address to create credential key and chain the branch to main
+<img width="681" alt="image" src="https://user-images.githubusercontent.com/118978642/236305715-f29b3ab4-1a85-4029-a69b-d0de1b3af4f5.png">
+- add the build trigger
+ <img width="259" alt="image" src="https://user-images.githubusercontent.com/118978642/236305859-63f017db-c080-44aa-b6cb-ef6123c1608e.png">
+- build enviroment
+ <img width="652" alt="image" src="https://user-images.githubusercontent.com/118978642/236305953-93f6e7b0-1b15-4a7b-9633-fd72b756b7e5.png">
+ - build steps
+ <img width="625" alt="image" src="https://user-images.githubusercontent.com/118978642/236306244-36014e23-4c46-416b-b207-9389ad9d4a32.png">
 
-
-
+##### step 2 - create a webhook
+ - Open your GitHub project
+- Go into project Settings
+- In the settings search for Webhooks
+- Click Add webhook
+- In the webhook settings:
+- Payload URL - copy Jenkins url
+- Content type - chose application/json
+- Select Just the push event
+- Click on Add webhook
+- Go to Jenkins
+- Open your task configuration
+- In Build triggers select GitHub hook trigger for GITScm polling:
+ <img width="596" alt="image" src="https://user-images.githubusercontent.com/118978642/236306903-fa4ded98-34e5-432e-8322-b34289d5832f.png">
+This will triggure automatic triggure when work is pushed to github for the repository
  
  
+ #### second job
+ 
+ ##### step 1 - launch EC2 instance for app
+ - launch an ec2 instance
+ - use previously configured AMI
+ - for SG make sure the following ports are open:
+ 
+ ```SSH port 22 for your IP
+ SSH port 22 for Jenkins IP
+HTTP port 80 for 0.0.0.0
+Custom TCP for port 3000 with 0.0.0.0
+Custom TCP for port 8080 (Jenkins port) with 0.0.0.0```
+ 
+ ##### step 2 - create job on Jenkins
+ - configure as per below
+<img width="652" alt="image" src="https://user-images.githubusercontent.com/118978642/236308934-a79c3aa2-4d28-4fdd-afe4-53f6707e6dfd.png">
+ <img width="666" alt="image" src="https://user-images.githubusercontent.com/118978642/236309079-0b735e34-7ffa-4dc8-9569-739926eb8e9e.png">
+ <img width="228" alt="image" src="https://user-images.githubusercontent.com/118978642/236309153-18362177-d6f1-4d07-ad09-b853fed6e2ce.png">
+ <img width="633" alt="image" src="https://user-images.githubusercontent.com/118978642/236309269-53002a71-c6f0-412e-8d76-58f528b0e237.png">
+ <img width="643" alt="image" src="https://user-images.githubusercontent.com/118978642/236309309-de359780-ec8d-415e-8f13-b3665f044c25.png">
+
+
+
+
+
