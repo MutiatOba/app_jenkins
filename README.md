@@ -211,10 +211,13 @@ if there is issue then send console output to relevant person. can save the logs
  Set up an EC2 instance which will host jenkins. Make sure when setting up the jenkins using ubuntu 18. 
  
  The security group for the EC2 should have the following ports opened:
- - 22, 
- - 8080
- - 80
- - 3000
+
+- SSH port 22 for your IP
+- SSH port 22 for Jenkins IP
+- HTTP port 80 for 0.0.0.0
+- HTTPS port 443 for 0.0.0.0
+- Custom TCP for port 3000 with 0.0.0.0
+- Custom TCP for port 8080 (Jenkins port) with 0.0.0.0
 
 2. ssh into ec2 instance install jenkins
 
