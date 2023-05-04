@@ -1,12 +1,3 @@
-### testing change again to test jenkins......
-### change from dev
-
-
-### THIS IS THE CHANGE
-### finalffffff6666666git 
-
-### checking 444455556666777775545588888
-
 
 Jenkins is an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
 
@@ -211,5 +202,94 @@ We have already automated testing with jenkins [look at build section]
 <img width="553" alt="image" src="https://user-images.githubusercontent.com/118978642/235888842-d913b53c-3d79-4b15-9c9e-68d67f6307ca.png">
 
 if there is issue then send console output to relevant person. can save the logs with s3 
+ 
+ 
+ ## CICD with Jenkins
+ 
+ 1. set up ec2 instance
+ 
+ Set up an EC2 instance which will host jenkins. Make sure when setting up the jenkins using ubuntu 18. 
+ 
+ The security group for the EC2 should have the following ports opened:
+ - 22, 
+ - 8080
+ - 80
+ - 3000
+
+2. ssh into ec2 instance install jenkins
+
+Run the following commands to intall jenkins
+
+```wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+sudo ufw allow OpenSSH
+sudo ufw enable
+sudo ufw allow 8080
+```
+
+3. Check jenkins installed, create login details 
+
+go to publicip:8080
+
+<img width="424" alt="image" src="https://user-images.githubusercontent.com/118978642/236256763-05e42da4-31a3-43db-80c8-3568fac3f060.png">
+
+to configure the login details:
+
+sudo nano /var/lib/jenkins/secrets/initialAdminPassword
+
+password: ef6391f5dd334dd18f5cee72446a0da9
+
+You will then be prompted to create admin details and install suggested plugins
+
+4. add plugins to jenkins
+
+You will need to install additional plugins by taking the following steps:
+
+- manage plugin
+- available plugins
+- select the plugins 
+
+A few notable plugins include:
+- Amazon EC2 Plugin
+- NodeJS Plugin
+- Office 365 Connector
+- SSH Agent Plugin
+
+5. Create ssh key for git and jenkins connection
+open gitbash terminal:
+- cd .ssh to get to ssh folder
+- create a new key `sss-keygen -t rsa -b 4096 -C "<email>"
+- name it mutiat-jenkins-key and press enter twice
+
+add public key to git repo:
+- select your repo
+- click settings 
+- click deploy keys
+- name your key. 
+- head over to bash terminal to retrieve public key: ```cat mutiat-jenkins-key.pub```
+- copy and paste content in the relevant box
+
+If you have issue adding ssh for jenkins, type this in git hub:
+
+```ssh -T git@github.com```
+
+7. set up your node
+- click on dashboard
+- manage jenkins
+
+8. create job on jenkins 
+
+- click on new items
+- give your job a name: mutiat_ci
+- click freestyle project
+- insert the html link to your git repo as per below
+
+
+
  
  
