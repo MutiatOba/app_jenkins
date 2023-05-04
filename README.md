@@ -328,12 +328,13 @@ This will triggure automatic triggure when work is pushed to github for the repo
  - launch an ec2 instance
  - use previously configured AMI
  - for SG make sure the following ports are open:
- 
- ```SSH port 22 for your IP
+``` 
+SSH port 22 for your IP
  SSH port 22 for Jenkins IP
 HTTP port 80 for 0.0.0.0
 Custom TCP for port 3000 with 0.0.0.0
-Custom TCP for port 8080 (Jenkins port) with 0.0.0.0```
+Custom TCP for port 8080 (Jenkins port) with 0.0.0.0
+```
  
  ##### step 2 - create job on Jenkins
  - configure as per below
