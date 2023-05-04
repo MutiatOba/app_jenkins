@@ -278,11 +278,16 @@ If you have issue adding ssh for jenkins, type this in git hub:
 
 ```ssh -T git@github.com```
 
-7. set up your node
+6. set up your node
 - click on dashboard
 - manage jenkins
+ - global tool configuration
+ - under Nodejs, configure as follows
+ 
+ <img width="796" alt="image" src="https://user-images.githubusercontent.com/118978642/236265973-d83c438b-59fc-4124-bc6a-4aeab43698f8.png">
 
-8. create job on jenkins 
+
+7. create job on jenkins 
 
 - click on new items
 - give your job a name: mutiat_ci
